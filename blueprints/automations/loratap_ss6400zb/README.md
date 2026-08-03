@@ -1,7 +1,7 @@
-# LoraTap SS6400ZB · 4-Button Zigbee Remote
+# LoraTap SS6400ZB · 4-Button Zigbee Remote Zigbee2MQTT ONLY 
 
 Maps all eight actions on a LoraTap SS6400ZB (single and double press on four
-buttons) to whatever you want. Paired via Zigbee2MQTT, no Tuya hub required.
+buttons) to whatever you want. Paired via Zigbee2MQTT, no Tuya hub required. Blueprint will not work with ZHA. 
 
 [![Open your Home Assistant instance and show the blueprint import dialog with this blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FEatTechDad%2Fhomeassistant%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Floratap_ss6400zb%2Floratap_ss6400zb.yaml)
 
