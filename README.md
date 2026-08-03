@@ -1,7 +1,7 @@
 # EatTechDad > Home Assistant
 
-Blueprints, scripts, and config I actually run in my own house. Everything here
-has a full write-up on [eattechdad.com](https://eattechdad.com).
+Blueprints, scripts, and config I actually run in my own house. Some code here
+will have a full write-up on [eattechdad.com](https://eattechdad.com).
 
 Nothing in this repo is theoretical. If it's here, it's because I needed it,
 built it, and it's still running.
