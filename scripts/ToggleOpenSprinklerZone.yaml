@@ -1,0 +1,35 @@
+fields:
+  zone_switch:
+    name: Zone Switch
+    description: The OpenSprinkler zone switch entity to control
+    example: switch.opensprinkler_s02_station
+    required: true
+    selector:
+      entity:
+        domain: switch
+        integration: opensprinkler
+  zone_sensor:
+    name: Zone Sensor
+    description: The sensor tracking this zone's current status
+    example: sensor.opensprinkler_s02_station_status
+    required: true
+    selector:
+      entity:
+        domain: sensor
+        integration: opensprinkler
+sequence:
+  - if:
+      - condition: template
+        value_template: "{{ states(zone_sensor) == 'idle' }}"
+    then:
+      - action: opensprinkler.run_station
+        target:
+          entity_id: "{{ zone_switch }}"
+        data:
+          run_seconds: "{{ (states('input_number.irrigation_duration') | int * 60) }}"
+          queue_option: append
+    else:
+      - action: opensprinkler.stop
+        target:
+          entity_id: "{{ zone_switch }}"
+mode: single
