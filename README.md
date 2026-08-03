@@ -1,4 +1,4 @@
-# EatTechDad · Home Assistant
+# EatTechDad > Home Assistant
 
 Blueprints, scripts, and config I actually run in my own house. Everything here
 has a full write-up on [eattechdad.com](https://eattechdad.com).
