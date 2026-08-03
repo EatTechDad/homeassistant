@@ -1,0 +1,153 @@
+blueprint:
+  name: LoraTap SS6400ZB 4-Button Remote Zigbee2MQTT
+  description: >
+    Assign actions to each button on a LoraTap SS6400ZB 4-button remote paired
+    via Zigbee2MQTT. Uses MQTT device triggers.
+
+    Note: a device trigger only exists after Zigbee2MQTT has seen that exact
+    action at least once. Press every button with every gesture you plan to use
+    before creating the automation, or the trigger will fail to resolve.
+  domain: automation
+  source_url: https://github.com/EatTechDad/homeassistant/blob/main/blueprints/automation/loratap_ss6400zb/loratap_ss6400zb.yaml
+  author: EatTechDad
+  homeassistant:
+    min_version: "2024.10.0"
+  input:
+    remote:
+      name: Remote
+      description: The SS6400ZB device as registered by the MQTT integration.
+      selector:
+        device:
+          integration: mqtt
+
+    button_1_single:
+      name: Button 1 - single press
+      default: []
+      selector:
+        action: {}
+    button_1_double:
+      name: Button 1 - double press
+      default: []
+      selector:
+        action: {}
+
+    button_2_single:
+      name: Button 2 - single press
+      default: []
+      selector:
+        action: {}
+    button_2_double:
+      name: Button 2 - double press
+      default: []
+      selector:
+        action: {}
+
+    button_3_single:
+      name: Button 3 - single press
+      default: []
+      selector:
+        action: {}
+    button_3_double:
+      name: Button 3 - double press
+      default: []
+      selector:
+        action: {}
+
+    button_4_single:
+      name: Button 4 - single press
+      default: []
+      selector:
+        action: {}
+    button_4_double:
+      name: Button 4 - double press
+      default: []
+      selector:
+        action: {}
+
+mode: restart
+max_exceeded: silent
+
+triggers:
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 1_single
+    id: 1_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 1_double
+    id: 1_double
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 2_single
+    id: 2_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 2_double
+    id: 2_double
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 3_single
+    id: 3_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 3_double
+    id: 3_double
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 4_single
+    id: 4_single
+  - trigger: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: 4_double
+    id: 4_double
+
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: 1_single
+        sequence: !input button_1_single
+      - conditions:
+          - condition: trigger
+            id: 1_double
+        sequence: !input button_1_double
+      - conditions:
+          - condition: trigger
+            id: 2_single
+        sequence: !input button_2_single
+      - conditions:
+          - condition: trigger
+            id: 2_double
+        sequence: !input button_2_double
+      - conditions:
+          - condition: trigger
+            id: 3_single
+        sequence: !input button_3_single
+      - conditions:
+          - condition: trigger
+            id: 3_double
+        sequence: !input button_3_double
+      - conditions:
+          - condition: trigger
+            id: 4_single
+        sequence: !input button_4_single
+      - conditions:
+          - condition: trigger
+            id: 4_double
+        sequence: !input button_4_double
